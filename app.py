@@ -3,7 +3,8 @@ import mlflow
 import mlflow.sklearn
 
 mlflow.set_tracking_uri("http://localhost:5000") # cambiar en función de su servidor
-model = mlflow.sklearn.load_model("models:/modelo2025-001/3") # cambiar en función de su modelo
+## http://127.0.0.1:5000/#/models/clase06/versions/1
+model = mlflow.sklearn.load_model("models:/clase06/1") # cambiar en función de su modelo
 
 app = Flask(__name__)
 
@@ -16,7 +17,7 @@ def predecir():
 
     pred = model.predict([texto])[0]
 
-    if pred == 1: 
+    if pred == 1:
         resultado = "positivo"
     else:
         resultado = "negativo"
@@ -30,8 +31,8 @@ def predecir_02():
         return jsonify({"error": "No enviaste texto"})
 
     pred = model.predict([texto])[0]
-    
-    if pred == 1: 
+
+    if pred == 1:
         resultado = "positivo"
     else:
         resultado = "negativo"
