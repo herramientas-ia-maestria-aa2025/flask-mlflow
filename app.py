@@ -4,7 +4,7 @@ import mlflow.sklearn
 
 mlflow.set_tracking_uri("http://localhost:5000") # cambiar en función de su servidor
 ## http://127.0.0.1:5000/#/models/clase06/versions/1
-model = mlflow.sklearn.load_model("models:/clase06/1") # cambiar en función de su modelo
+model = mlflow.sklearn.load_model("models:/clasificador_sentimientos/1") # cambiar en función de su modelo
 
 app = Flask(__name__)
 
@@ -41,4 +41,10 @@ def predecir_02():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5050)
+    # app.run(debug=True, port=5050)
+    app.run(
+            host="127.0.0.1",
+            port=5001,
+            debug=False,
+            use_reloader=False
+        )
